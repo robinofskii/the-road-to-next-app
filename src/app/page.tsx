@@ -1,5 +1,14 @@
+import Link from "next/link";
+
 const HomePage = () => {
-  return <h2 className="text-lg">Welcome to The Road to Next App!</h2>;
+  return (
+    <>
+      <h2 className="text-lg">Welcome to The Road to Next App!</h2>
+      <Link href="/tickets" className="text-blue-500 underline">
+        View Tickets
+      </Link>
+    </>
+  );
 };
 
 export default HomePage;
