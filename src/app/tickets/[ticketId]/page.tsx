@@ -2,9 +2,9 @@ import BackButton from "@/components/BackButton";
 import { initialTickets } from "@/data";
 
 type TicketDetailsProps = {
-  params: {
+  params: Promise<{
     ticketId: string;
-  };
+  }>;
 };
 
 const TicketDetailPage = async ({ params }: TicketDetailsProps) => {
