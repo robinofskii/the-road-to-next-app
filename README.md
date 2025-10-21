@@ -28,16 +28,14 @@ A step by step series of examples that tell you how to get a development env run
 1. Clone the repository
    ```
    git clone
-    ```
+   ```
 2. Install dependencies
-    ```
-    npm install
-    ```
+   ```
+   npm install
+   ```
 3. Run the development server
-    ```
-    npm run dev
-    ```
+   ```
+   npm run dev
+   ```
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 5. Start coding!
-
-

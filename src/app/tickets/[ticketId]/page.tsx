@@ -18,9 +18,9 @@ const TicketDetailPage = async ({ params }: TicketDetailsProps) => {
 
   return (
     <div>
-      <div className="flex gap-2 items-center">
+      <div className="flex items-center gap-2">
         <BackButton />
-        <h1 className="text-2xl font-bold mb-4">{ticketData.title}</h1>
+        <h1 className="mb-4 text-2xl font-bold">{ticketData.title}</h1>
       </div>
       <p className="mb-2">
         <span className="font-semibold">Status:</span> {ticketData.status}
