@@ -1,13 +1,14 @@
 import Link from "next/link";
+import clsx from "clsx";
 
 import { initialTickets, TicketStatus } from "@/data";
 
 import { ticketPath } from "../paths";
 
 const TICKET_ICONS: Record<TicketStatus, string> = {
-  open: "🟢",
+  open: "🔴",
   "in progress": "🟡",
-  closed: "🔴",
+  closed: "🟢",
 };
 
 const TicketsPage = () => {
@@ -31,7 +32,13 @@ const TicketsPage = () => {
                 {ticket.title}{" "}
                 <span title={ticket.status}>{TICKET_ICONS[ticket.status]}</span>
               </h3>
-              <p className="truncate text-slate-500">{ticket.description}</p>
+              <p
+                className={clsx("truncate text-sm text-slate-500", {
+                  "line-through": ticket.status === "closed",
+                })}
+              >
+                {ticket.description}
+              </p>
             </li>
           </Link>
         ))}
