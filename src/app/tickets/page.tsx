@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 
@@ -5,10 +6,61 @@ import { initialTickets, TicketStatus } from "@/data";
 
 import { ticketPath } from "../paths";
 
-const TICKET_ICONS: Record<TicketStatus, string> = {
-  open: "🔴",
-  "in progress": "🟡",
-  closed: "🟢",
+const CheckCircleIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth={1.5}
+    stroke="currentColor"
+    className="size-6"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+    />
+  </svg>
+);
+
+const LightBulbIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth={1.5}
+    stroke="currentColor"
+    className="size-6"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
+    />
+  </svg>
+);
+
+const ClipboardIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth={1.5}
+    stroke="currentColor"
+    className="size-6"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"
+    />
+  </svg>
+);
+
+const TICKET_ICONS: Record<TicketStatus, JSX.Element> = {
+  OPEN: <ClipboardIcon />,
+  IN_PROGRESS: <LightBulbIcon />,
+  RESOLVED: <CheckCircleIcon />,
 };
 
 const TicketsPage = () => {
@@ -20,7 +72,7 @@ const TicketsPage = () => {
           Here are all your tickets in the system.
         </p>
       </header>
-      <ul className="flex flex-1 flex-col items-center space-y-4">
+      <ul className="animate-fade-in-from-top flex flex-1 flex-col items-center space-y-4">
         {initialTickets.map((ticket) => (
           <Link
             key={ticket.id}
@@ -28,13 +80,17 @@ const TicketsPage = () => {
             className="w-full max-w-md"
           >
             <li className="rounded border border-slate-100 p-4 shadow">
-              <h3 className="truncate text-xl font-semibold">
-                {ticket.title}{" "}
-                <span title={ticket.status}>{TICKET_ICONS[ticket.status]}</span>
-              </h3>
+              <div className="mb-2 flex flex-1 items-center gap-2">
+                <div>
+                  <div>{TICKET_ICONS[ticket.status]}</div>
+                </div>
+                <h3 className="truncate text-xl font-semibold">
+                  {ticket.title}
+                </h3>
+              </div>
               <p
                 className={clsx("truncate text-sm text-slate-500", {
-                  "line-through": ticket.status === "closed",
+                  "line-through": ticket.status === "RESOLVED",
                 })}
               >
                 {ticket.description}

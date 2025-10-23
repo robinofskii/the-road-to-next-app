@@ -1,4 +1,4 @@
-export type TicketStatus = "open" | "in progress" | "closed";
+export type TicketStatus = "OPEN" | "IN_PROGRESS" | "RESOLVED";
 
 export interface Ticket {
   id: string;
@@ -12,18 +12,18 @@ export const initialTickets: Ticket[] = [
     id: "1",
     title: "Fix login bug",
     description: "Users are unable to log in with correct credentials.",
-    status: "open",
+    status: "OPEN",
   },
   {
     id: "2",
     title: "Add user profile page",
     description: "Create a new page for users to view and edit their profiles.",
-    status: "in progress",
+    status: "IN_PROGRESS",
   },
   {
     id: "3",
     title: "Improve performance",
     description: "Optimize the application for better load times.",
-    status: "closed",
+    status: "RESOLVED",
   },
 ];
