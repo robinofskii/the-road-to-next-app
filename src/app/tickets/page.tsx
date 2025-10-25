@@ -1,7 +1,13 @@
 import { JSX } from "react";
 import Link from "next/link";
-import clsx from "clsx";
 
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { initialTickets, TicketStatus } from "@/data";
 
 import { ticketPath } from "../paths";
@@ -72,33 +78,25 @@ const TicketsPage = () => {
           Here are all your tickets in the system.
         </p>
       </header>
-      <ul className="animate-fade-in-from-top flex flex-1 flex-col items-center space-y-4">
+      <div className="animate-fade-in-from-top flex flex-1 flex-col items-center space-y-4">
         {initialTickets.map((ticket) => (
           <Link
-            key={ticket.id}
             href={ticketPath(ticket.id)}
             className="w-full max-w-md"
+            key={ticket.id}
           >
-            <li className="rounded border border-slate-100 p-4 shadow">
-              <div className="mb-2 flex flex-1 items-center gap-2">
-                <div>
-                  <div>{TICKET_ICONS[ticket.status]}</div>
-                </div>
-                <h3 className="truncate text-xl font-semibold">
-                  {ticket.title}
-                </h3>
-              </div>
-              <p
-                className={clsx("truncate text-sm text-slate-500", {
-                  "line-through": ticket.status === "RESOLVED",
-                })}
-              >
+            <Card key={ticket.id}>
+              <CardHeader>
+                <CardTitle>{ticket.title}</CardTitle>
+                <CardAction>{TICKET_ICONS[ticket.status]}</CardAction>
+              </CardHeader>
+              <CardContent className="line-clamp-3">
                 {ticket.description}
-              </p>
-            </li>
+              </CardContent>
+            </Card>
           </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
