@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Link from "next/link";
 
 import { ticketsPath } from "@/app/paths";
@@ -5,6 +6,24 @@ import { Placeholder } from "@/components/placeholder";
 import { Button } from "@/components/ui/button";
 import { initialTickets } from "@/data";
 import { TicketCard } from "@/features/tickets/components/ticket-card";
+
+export async function generateMetadata({
+  params,
+}: LayoutProps<"/tickets/[ticketId]">): Promise<Metadata> {
+  const { ticketId } = await params;
+
+  const ticketData = initialTickets.find((ticket) => ticket.id === ticketId);
+
+  if (!ticketData)
+    return {
+      title: "Ticket not found",
+    };
+
+  return {
+    title: `TicketHunter - ${ticketData.title}`,
+    description: ticketData.description,
+  };
+}
 
 export default async function TicketLayout({
   children,
