@@ -1,7 +1,9 @@
 "use client";
 
-import { LucideEdit } from "lucide-react";
+import Link from "next/link";
+import { LucideEdit, LucideView } from "lucide-react";
 
+import { ticketPath } from "@/app/paths";
 import { Button } from "@/components/ui/button";
 
 import { Ticket } from "../types";
@@ -36,5 +38,19 @@ export const TicketCardEditButton = ({
       icon={<LucideEdit />}
       onClick={() => console.log(`Edit ticket with ID: ${ticketId}`)}
     />
+  );
+};
+
+export const TicketCardViewButton = ({
+  ticketId,
+}: {
+  ticketId: Ticket["id"];
+}) => {
+  return (
+    <Button asChild size="icon" variant="outline">
+      <Link href={ticketPath(ticketId)}>
+        <LucideView />
+      </Link>
+    </Button>
   );
 };
