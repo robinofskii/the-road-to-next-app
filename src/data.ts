@@ -1,11 +1,4 @@
-export type TicketStatus = "OPEN" | "IN_PROGRESS" | "RESOLVED";
-
-export interface Ticket {
-  id: string;
-  title: string;
-  description: string;
-  status: TicketStatus;
-}
+import { Ticket } from "./features/tickets/types";
 
 export const initialTickets: Ticket[] = [
   {
