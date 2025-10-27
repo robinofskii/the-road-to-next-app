@@ -12,6 +12,8 @@ import {
 import { TICKET_ICONS } from "../constants";
 import { Ticket } from "../types";
 
+import { TicketCardEditButton } from "./ticket-card-button";
+
 type TicketProps = {
   ticket: Ticket;
 };
@@ -21,8 +23,13 @@ export const TicketCard = ({ ticket }: TicketProps) => {
     <Link href={ticketPath(ticket.id)} className="w-full max-w-md">
       <Card key={ticket.id}>
         <CardHeader>
-          <CardTitle>{ticket.title}</CardTitle>
-          <CardAction>{TICKET_ICONS[ticket.status]}</CardAction>
+          <CardTitle className="flex flex-1 items-center gap-2">
+            {TICKET_ICONS[ticket.status]}
+            {ticket.title}
+          </CardTitle>
+          <CardAction>
+            <TicketCardEditButton ticketId={ticket.id} />
+          </CardAction>
         </CardHeader>
         <CardContent className="line-clamp-3">{ticket.description}</CardContent>
       </Card>
