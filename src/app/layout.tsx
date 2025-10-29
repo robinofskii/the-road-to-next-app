@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { HeaderNav } from "@/components/header-nav";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 
 import "./globals.css";
 
@@ -26,14 +27,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <HeaderNav />
-        <main className="bg-secondary/20 flex min-h-screen flex-1 flex-col overflow-x-hidden overflow-y-auto px-8 py-24">
-          {children}
-        </main>
+        <ThemeProvider>
+          <HeaderNav />
+          <main className="bg-secondary/20 flex min-h-screen flex-1 flex-col overflow-x-hidden overflow-y-auto px-8 py-24">
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );
