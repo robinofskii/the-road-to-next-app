@@ -1,4 +1,3 @@
-import BackButton from "@/components/BackButton";
 import { initialTickets } from "@/data";
 
 type TicketDetailsProps = {
@@ -19,7 +18,6 @@ const TicketDetailPage = async ({ params }: TicketDetailsProps) => {
   return (
     <div>
       <div className="flex items-center gap-2">
-        <BackButton />
         <h1 className="mb-4 text-2xl font-bold">{ticketData.title}</h1>
       </div>
       <p className="mb-2">
