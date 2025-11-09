@@ -1,9 +1,12 @@
+import { lazy } from "react";
 import Link from "next/link";
 import { LucideCrosshair, LucideTags } from "lucide-react";
 
 import { homePath, ticketsPath } from "@/app/paths";
 
 import { Button } from "./ui/button";
+
+const ThemeSwitcher = lazy(() => import("../components/theme/theme-switcher"));
 
 export const HeaderNav = () => {
   return (
@@ -18,12 +21,15 @@ export const HeaderNav = () => {
           </Button>
         </li>
         <li>
-          <Button asChild>
-            <Link href={ticketsPath()}>
-              <LucideTags />
-              Tickets
-            </Link>
-          </Button>
+          <div className="flex flex-row items-center gap-2">
+            <ThemeSwitcher />
+            <Button asChild>
+              <Link href={ticketsPath()}>
+                <LucideTags />
+                Tickets
+              </Link>
+            </Button>
+          </div>
         </li>
       </ul>
     </nav>
