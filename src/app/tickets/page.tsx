@@ -1,9 +1,15 @@
 import Link from "next/link";
 
 import BackButton from "@/components/BackButton";
-import { initialTickets } from "@/data";
+import { initialTickets, TicketStatus } from "@/data";
 
 import { ticketPath } from "../paths";
+
+const TICKET_ICONS: Record<TicketStatus, string> = {
+  open: "🟢",
+  "in progress": "🟡",
+  closed: "🔴",
+};
 
 const TicketsPage = () => {
   return (
@@ -17,8 +23,7 @@ const TicketsPage = () => {
           <Link key={ticket.id} href={ticketPath(ticket.id)}>
             <li key={ticket.id} className="rounded border p-4 shadow">
               <h2 className="text-xl font-semibold">
-                {ticket.title}{" "}
-                <span className="text-sm text-gray-400">{ticket.status}</span>
+                {ticket.title} <span>{TICKET_ICONS[ticket.status]}</span>
               </h2>
               <p className="text-gray-600">{ticket.description}</p>
             </li>
