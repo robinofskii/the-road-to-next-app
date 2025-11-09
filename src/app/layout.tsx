@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ticket management App",
+  title: "TicketHunter",
   description: "A simple ticket management app built with Next.js",
 };
 
