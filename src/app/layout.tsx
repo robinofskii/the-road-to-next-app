@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import { LucideHouse, LucideTags } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -36,15 +37,17 @@ export default function RootLayout({
         <nav>
           <ul className="supports-backdrop-blur:bg-background/60: bg-background/95 background-blur fixed top-0 right-0 left-0 z-20 flex w-full justify-between border-b px-5 py-2.5">
             <li>
-              <Button asChild variant="outline">
-                <Link href={homePath()} className="text-lg font-bold">
+              <Button asChild variant="ghost">
+                <Link href={homePath()}>
+                  <LucideHouse />
                   Home
                 </Link>
               </Button>
             </li>
             <li>
               <Button asChild>
-                <Link href={ticketsPath()} className="text-sm">
+                <Link href={ticketsPath()}>
+                  <LucideTags />
                   Tickets
                 </Link>
               </Button>

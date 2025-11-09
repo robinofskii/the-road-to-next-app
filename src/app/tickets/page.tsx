@@ -1,6 +1,10 @@
 import { JSX } from "react";
 import Link from "next/link";
-import { Circle, CircleCheck, CircleDashed } from "lucide-react";
+import {
+  LucideCircle,
+  LucideCircleCheck,
+  LucideCircleDashed,
+} from "lucide-react";
 
 import {
   Card,
@@ -15,9 +19,9 @@ import { initialTickets, TicketStatus } from "@/data";
 import { ticketPath } from "../paths";
 
 const TICKET_ICONS: Record<TicketStatus, JSX.Element> = {
-  OPEN: <CircleDashed />,
-  IN_PROGRESS: <Circle />,
-  RESOLVED: <CircleCheck />,
+  OPEN: <LucideCircleDashed />,
+  IN_PROGRESS: <LucideCircle />,
+  RESOLVED: <LucideCircleCheck />,
 };
 
 const TicketsPage = () => {
