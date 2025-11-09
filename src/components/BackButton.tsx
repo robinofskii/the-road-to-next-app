@@ -9,7 +9,7 @@ const BackButton = () => {
   return (
     <button
       onClick={() => router.back()}
-      className="border p-2 rounded-full mb-4 cursor-pointer"
+      className="mb-4 cursor-pointer rounded-full border p-2"
     >
       ←
     </button>
