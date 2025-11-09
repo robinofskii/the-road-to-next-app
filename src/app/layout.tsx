@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
-import { LucideHouse, LucideTags } from "lucide-react";
+import { LucideCrosshair, LucideTags } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -39,8 +39,8 @@ export default function RootLayout({
             <li>
               <Button asChild variant="ghost">
                 <Link href={homePath()}>
-                  <LucideHouse />
-                  Home
+                  <LucideCrosshair />
+                  <h1 className="text-lg font-semibold">TicketHunter</h1>
                 </Link>
               </Button>
             </li>
